@@ -11,8 +11,8 @@ long_text = (
 )
 
 # 1. Initialize the splitter
-text_splitter = RecursiveCharacterTextSplitter(
-    separators=["\n\n", "\n", " ", ""],
+text_splitter = RecursiveCharacterTextSplitter( 
+    separators=["\n\n", "\n", " ", ""], #initially came across a problem when using the CharacterTextSplitter with separator="\n", it would explicitly look for the separator and then ignore the chunk size command if separator didnt exist
     chunk_size = 120,  # Max characters per chunk
     chunk_overlap  = 20,  # Overlap between chunks
     length_function=len,
@@ -28,4 +28,5 @@ print("-" * 20)
 
 for i, chunk in enumerate(chunks):
     print(f"Chunk {i+1} (length: {len(chunk)}):\n\"{chunk}\"")
+
     print("-" * 20)
